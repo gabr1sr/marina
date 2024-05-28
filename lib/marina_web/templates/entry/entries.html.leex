@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <th>Data da verificação</th>
+	<th>Saída verificada</th>
+	<th>Retorno verificado</th>
+	<th>Parada verificada</th>
+  </thead>
+  <tbody>
+<%= for entry <- @entries do %>
+    <tr>
+	  <td><%= Calendar.strftime(entry.date, "%d/%m/%Y") %></td>
+      <td><%= if entry.exit_verified, do: "Sim", else: "Não" %></td>
+      <td><%= if entry.return_verified, do: "Sim", else: "Não" %></td>
+      <td><%= if entry.stop_verified, do: "Sim", else: "Não" %></td>
+	  
+	  <td>
+      <span><%= link "Mostrar", to: Routes.entry_path(MarinaWeb.Endpoint, :show, entry.report_id, entry.id) %></span>
+	    <span><%= link "Editar", to: Routes.entry_path(MarinaWeb.Endpoint, :edit, entry.report_id, entry.id) %></span>
+      <span><%= link "Excluir", to: Routes.entry_path(MarinaWeb.Endpoint, :delete, entry.report_id, entry.id), method: :delete, data: [confirm: "Tem certeza?"] %></span>
+	  </td>
+	</tr>
+<% end %>
+  </tbody>
+</table>

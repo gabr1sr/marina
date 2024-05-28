@@ -1,0 +1,5 @@
+<h1>Novo relatório</h1>
+
+<%= live_render(@conn, MarinaWeb.ReportsFormLive, session: %{"action" => Routes.report_path(@conn, :create), "report" => @report, "changeset" => @changeset}) %>
+
+<span><%= link "Voltar", to: Routes.report_path(@conn, :index) %></span>

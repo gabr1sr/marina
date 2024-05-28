@@ -1,0 +1,37 @@
+<h1>Relatório #<%= @report.id %></h1>
+
+<ul>
+
+  <li>
+	  <strong>Embarcação:</strong>
+	  <%= @report.vessel %>
+  </li>
+  
+  <li>
+	  <strong>Modelo:</strong>
+	  <%= @report.model %>
+  </li>
+  
+  <li>
+ 	  <strong>Proprietário:</strong>
+	  <%= @report.owner %>
+  </li>
+  
+  <li>
+	  <strong>Pés:</strong>
+	  <%= @report.feets %>
+  </li>
+
+</ul>
+
+<div>
+  <span><%= live_redirect "Voltar", to: Routes.report_path(@conn, :index) %></span>
+</div>
+
+<br />
+
+<div>
+  <h2>Lançamentos</h2>
+  <%= Phoenix.View.render(MarinaWeb.EntryView, "entries.html", entries: @entries) %>
+  <span><%= button "Novo lançamento", to: Routes.entry_path(@conn, :new, @report.id), method: :get %></span>
+</div>

@@ -1,0 +1,28 @@
+<h1>Relatórios</h1>
+
+<table>
+  <thead>
+    <th>Embarcação</th>
+	<th>Modelo</th>
+	<th>Proprietário</th>
+	<th>Pés</th>
+  </thead>
+  <tbody>
+<%= for report <- @reports do %>
+    <tr>
+	  <td><%= report.vessel %></td>
+	  <td><%= report.model %></td>
+	  <td><%= report.owner %></td>
+	  <td><%= report.feets %></td>
+	  
+	  <td>
+		<span><%= link "Mostrar", to: Routes.report_path(@socket, :show, report) %></span>
+		<span><%= link "Editar", to: Routes.report_path(@socket, :edit, report) %></span>		
+		<span><%= link "Excluir", to: Routes.report_path(@socket, :delete, report), method: :delete, data: [confirm: "Tem certeza?"] %></span>
+	  </td>
+	</tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= button "Novo relatório", to: Routes.report_path(@socket, :new), method: :get %></button></span>

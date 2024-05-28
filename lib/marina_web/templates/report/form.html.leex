@@ -1,0 +1,63 @@
+<%= f = form_for @changeset, @action, [phx_change: :update] %>
+  <%= if @changeset.action do %>
+  <div class="alert alert-danger">
+	  <p>Falha ao executar ação!</p>
+	</div>
+  <% end %>
+  
+  <div x-data="{ vessels: <%= @vessels %> }">
+    <%= label f, :vessel, "Embarcação" %>
+    <%= text_input f, :vessel, value: @report.vessel, list: "vessels", placeholder: "Nome da embarcação", autocomplete: "off", x_ref: "vessel" %>
+    <%= error_tag f, :vessel %>
+    <template x-if="vessels.length > 0 && !vessels.includes($refs.vessel.value) && $refs.vessel.value !== vessels[0]">
+      <datalist id="vessels">
+        <template x-for="vessel in vessels" :key="vessel">
+          <option :value="vessel" x-text="vessel"></option>
+        </template>
+      </datalist>
+    </template>
+  </div>
+  
+  <div  x-data="{ models: <%= @models %> }">
+    <%= label f, :model, "Modelo" %>
+    <%= text_input f, :model, value: @report.model, list: "models", placeholder: "Modelo da embarcação", autocomplete: "off", x_ref: "model"  %>
+    <%= error_tag f, :model %>
+    <template x-if="models.length > 0 && !models.includes($refs.model.value) && $refs.model.value !== models[0]">
+      <datalist id="models">
+        <template x-for="model in models" :key="model">
+          <option :value="model" x-text="model"></option>
+        </template>
+      </datalist>
+    </template>
+  </div>
+  
+  <div x-data="{ owners: <%= @owners %> }">
+    <%= label f, :owner, "Proprietário" %>
+    <%= text_input f, :owner, value: @report.owner, list: "owners", placeholder: "Proprietário da embarcação", autocomplete: "off", x_ref: "owner" %>
+    <%= error_tag f, :owner %>
+    <template x-if="owners.length > 0 && !owners.includes($refs.owner.value) && $refs.owner.value !== owners[0]">
+      <datalist id="owners">
+        <template x-for="owner in owners" :key="owner">
+          <option :value="owner" x-text="owner"></option>
+        </template>
+      </datalist>
+    </template>
+  </div>
+  
+  <div x-data="{ feets: <%= @feets %> }">
+    <%= label f, :feets, "Pés" %>
+    <%= number_input f, :feets, value: @report.feets, list: "feets", inputmode: "numeric", pattern: "[0-9]*", placeholder: "Pés da embarcação", autocomplete: "off", x_ref: "feets" %>
+    <%= error_tag f, :feets %>
+    <template x-if="$refs.feets.value !== feets[0]">
+      <datalist id="feets">
+        <template x-for="feet in feets" :key="feet">
+          <option :value="feet" x-text="feet"></option>
+        </template>
+      </datalist>
+    </template>
+  </div>
+  
+  <div>
+    <%= submit "Salvar" %>
+  </div>
+</form>

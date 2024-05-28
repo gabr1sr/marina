@@ -1,0 +1,106 @@
+<%= f = form_for @changeset, @action %>
+  <%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Falha ao executar ação!</p>
+  </div>
+  <% end %>
+  
+  <%= hidden_input f, :report_id, value: @id %>
+  
+  <div class="form-divisor">
+    <%= label f, :date, "Data de verificação" %>
+    <%= date_input f, :date %>
+    <%= error_tag f, :date %>
+  </div>
+  
+  <div class="form-divisor exit-form">
+    <h2>Checagem de saída</h2>
+    <%= label f, :verify_1, "Verificou o tampão?" %>
+    <%= select f, :verify_1, @options %>
+    <%= error_tag f, :verify_1 %>
+  
+    <%= label f, :verify_2, "Verificou o nível de combustível?" %>
+    <%= select f, :verify_2, @options %>
+    <%= error_tag f, :verify_2 %>
+  
+    <%= label f, :verify_3, "Verificou o nível de água?" %>
+    <%= select f, :verify_3, @options %>
+    <%= error_tag f, :verify_3 %>
+  
+    <%= label f, :verify_4, "Verificou o nível de óleo?" %>
+    <%= select f, :verify_4, @options %>
+    <%= error_tag f, :verify_4 %>
+  
+    <%= label f, :verify_5, "Verificou o nível água doce do chuveirinho?" %>
+    <%= select f, :verify_5, @options %>
+    <%= error_tag f, :verify_5 %>
+  
+    <%= label f, :exit_responsible, "Responsável" %>
+    <%= text_input f, :exit_responsible, autocomplete: "off" %>
+    <%= error_tag f, :exit_responsible %>
+    
+    <%= label f, :exit_verified, "Verificado?" %>
+    <%= select f, :exit_verified, @options %>
+    <%= error_tag f, :exit_verified %>
+  </div>
+  
+  <div class="form-divisor return-form">
+    <h2>Checagem de volta</h2>
+    <%= label f, :verify_6, "Foi realizada a lavagem do barco?" %>
+    <%= select f, :verify_6, @options %>
+    <%= error_tag f, :verify_6 %>
+    
+    <%= label f, :verify_7, "O motor foi adoçado por pelo menos 10 minutos?" %>
+    <%= select f, :verify_7, @options %>
+    <%= error_tag f, :verify_7 %>
+    
+    <%= label f, :verify_8, "Foi aplicado o silicone spray?" %>
+    <%= select f, :verify_8, @options %>
+    <%= error_tag f, :verify_8 %>
+    
+    <%= label f, :return_responsible, "Responsável" %>
+    <%= text_input f, :return_responsible, autocomplete: "off" %>
+    <%= error_tag f, :return_responsible %>
+    
+    <%= label f, :return_verified, "Verificado?" %>
+    <%= select f, :return_verified, @options %>
+    <%= error_tag f, :return_verified %>
+  </div>
+  
+  <div class="form-divisor stop-form">
+    <h2>Checagem de parada</h2>
+    <%= label f, :verify_9, "O trim foi acionado 1 vez?" %>
+    <%= select f, :verify_9, @options %>
+    <%= error_tag f, :verify_9 %>
+    
+    <%= label f, :verify_10, "O motor foi ligado por pelo menos 5 minutos?" %>
+    <%= select f, :verify_10, @options %>
+    <%= error_tag f, :verify_10 %>
+    
+    <%= label f, :verify_11, "A iluminação foi acionada?" %>
+    <%= select f, :verify_11, @options %>
+    <%= error_tag f, :verify_11 %>
+    
+    <%= label f, :stop_responsible, "Responsável" %>
+    <%= text_input f, :stop_responsible, autocomplete: "off" %>
+    <%= error_tag f, :stop_responsible %>
+    
+    <%= label f, :stop_verified, "Verificado?" %>
+    <%= select f, :stop_verified, @options %>
+    <%= error_tag f, :stop_verified %>
+  </div>
+  
+  <div class="last-form">
+    <%= label f, :occurrencies, "Ocorrências" %>
+    <%= textarea f, :occurrencies, autocomplete: "off" %>
+    <%= error_tag f, :occurrencies %>
+    
+    <%= label f, :comment, "Comentário" %>
+    <%= textarea f, :comment, autocomplete: "off" %>
+    <%= error_tag f, :comment %>
+  </div>
+  
+  <div>
+    <%= submit "Enviar" %>
+  </div>
+</form>

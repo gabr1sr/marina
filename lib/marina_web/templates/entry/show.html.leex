@@ -1,0 +1,100 @@
+<h1>Verificação #<%= @entry.id %></h1>
+
+<ul>
+  <li>
+    <strong>Data de verificação: </strong>
+    <%= Calendar.strftime(@entry.date, "%d/%m/%Y") %>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <strong>Verificou o tampão? </strong>
+    <%= if @entry.verify_1, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Verificou o nível de combustível? </strong>
+    <%= if @entry.verify_2, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Verificou o nível de água? </strong>
+    <%= if @entry.verify_3, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Verificou o nível de óleo? </strong>
+    <%= if @entry.verify_4, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Verificou o nível água doce do chuveirinho? </strong>
+    <%= if @entry.verify_5, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Responsável pela verificação: </strong>
+    <%= @entry.exit_responsible %>
+  </li>
+  <li>
+    <strong>Verificado? </strong>
+    <%= if @entry.exit_verified, do: "Sim", else: "Não" %>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <strong>Foi realizada a lavagem do barco? </strong>
+    <%= if @entry.verify_6, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>O motor foi adoçado por pelo menos 10 minutos? </strong>
+    <%= if @entry.verify_7, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Foi aplicado o silicone spray? </strong>
+    <%= if @entry.verify_8, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Responsável pela verificação: </strong>
+    <%= @entry.return_responsible %>
+  </li>
+  <li>
+    <strong>Verificado? </strong>
+    <%= if @entry.return_verified, do: "Sim", else: "Não" %>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <strong>O trim foi acionado 1 vez? </strong>
+    <%= if @entry.verify_9, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>O motor foi ligado por pelo menos 5 minutos? </strong>
+    <%= if @entry.verify_10, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>A iluminação foi acionada? </strong>
+    <%= if @entry.verify_11, do: "Sim", else: "Não" %>
+  </li>
+  <li>
+    <strong>Responsável pela verificação: </strong>
+    <%= @entry.stop_responsible %>
+  </li>
+  <li>
+    <strong>Verificado? </strong>
+    <%= if @entry.stop_verified, do: "Sim", else: "Não" %>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <strong>Ocorrências: </strong>
+    <%= @entry.occurrencies %>
+  </li>
+  <li>
+    <strong>Comentário: </strong>
+    <%= @entry.comment %>
+  </li>
+</ul>
+
+<div>
+  <span><%= live_redirect "Voltar", to: Routes.report_path(@conn, :show, @id) %></span>
+</div>

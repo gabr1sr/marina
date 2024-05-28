@@ -1,0 +1,5 @@
+<h1>Novo lançamento</h1>
+
+<%= render "form.html", Map.merge(assigns, %{action: Routes.entry_path(@conn, :create, @id), id: @id}) %>
+
+<span><%= link "Voltar", to: Routes.report_path(@conn, :show, @id) %></span>

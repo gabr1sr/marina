@@ -1,0 +1,5 @@
+<h1>Lançamentos</h1>
+
+<%= Phoenix.View.render(MarinaWeb.EntryView, "entries.html", entries: @entries) %>
+
+<span><%= button "Novo lançamento", to: Routes.entry_path(@conn, :new, @id), method: :get %></span>
